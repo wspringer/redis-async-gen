@@ -9,6 +9,7 @@
   "devDependencies": {
     "buble": "^0.19.7",
     "jest": "^24.8.0",
+    "redis-server": "^1.2.2",
     "rollup": "^1.14.4",
     "rollup-plugin-buble": "^0.19.6"
   },
@@ -16,5 +17,8 @@
     "transform": {
       "^.+\\.jsx?$": "buble-jest"
     }
+  },
+  "dependencies": {
+    "redis": "^2.8.0"
   }
 }
