@@ -2,14 +2,13 @@
   "name": "redis-async-gen",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "dist/redis-async-gen.min.js",
+  "main": "dist/redis-async-gen.js",
+  "module": "dist/redis-async-gen.esm.js",
   "scripts": {
-    "prepare": "run-s build",
+    "prepublishOnly": "run-s clean test build",
     "test": "jest",
-    "build": "run-s mkdirs compile",
-    "compile": "babel src/index.js --out-file dist/redis-async-gen.js",
-    "mkdirs": "shx mkdir -p dist",
-    "clean": "shx rm -fr dist"
+    "build": "rollup -c",
+    "clean": "rimraf dist"
   },
   "files": [
     "dist"
@@ -23,7 +22,10 @@
     "jest": "^24.8.0",
     "npm-run-all": "^4.1.5",
     "redis-server": "^1.2.2",
-    "shx": "^0.3.2"
+    "rimraf": "^2.6.3",
+    "rollup": "^1.15.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-cpy": "^1.1.0"
   },
   "babel": {
     "presets": [
