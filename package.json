@@ -3,22 +3,33 @@
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/redis-async-gen.min.js",
+  "scripts": {
+    "test": "jest",
+    "build": "run-s mkdirs compile",
+    "compile": "babel src/index.js --out-file dist/index.js",
+    "mkdirs": "shx mkdir -p dist"
+  },
   "files": [
     "dist"
   ],
   "devDependencies": {
-    "buble": "^0.19.7",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "find-free-port": "^2.0.0",
     "jest": "^24.8.0",
+    "npm-run-all": "^4.1.5",
     "redis-server": "^1.2.2",
-    "rollup": "^1.14.4",
-    "rollup-plugin-buble": "^0.19.6"
+    "shx": "^0.3.2"
   },
-  "jest": {
-    "transform": {
-      "^.+\\.jsx?$": "buble-jest"
-    }
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
   "dependencies": {
-    "redis": "^2.8.0"
+    "async-redis": "^1.1.7",
+    "regenerator-runtime": "^0.13.2"
   }
 }
