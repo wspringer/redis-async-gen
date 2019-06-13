@@ -1,6 +1,6 @@
 import { promisify } from 'util'
 
-export function create(client) {
+export function using(client) {
 
   const scan = promisify(client.scan).bind(client)
 

@@ -1,7 +1,7 @@
 import { createClient } from 'redis'
 import { createClient as createAsyncClient } from 'async-redis'
 import 'regenerator-runtime/runtime'
-import { create } from './index'
+import * as generators from './index'
 
 const freePort = require('find-free-port')
 const RedisServer = require('redis-server')
@@ -19,7 +19,7 @@ describe('async generator', () => {
     server = new RedisServer(port)
     await server.open()
     client = createClient(port)
-    gen = create(client)
+    gen = generators.using(client)
     asyncClient = createAsyncClient(port)
   })
 
@@ -31,15 +31,29 @@ describe('async generator', () => {
 
   it('should return all keys', async () => {
     const allKeys = [...Array(100).keys()].map((idx) => {
-      return `test:${idx}`
+      return `test1:${idx}`
     })
     await Promise.all(allKeys.map((key) => asyncClient.sadd(key, 'foo')))
     let counted = 0
-    for await (const key of gen.keysMatching('test*')) {
+    for await (const key of gen.keysMatching('test1*')) {
       expect(allKeys).toContain(key)      
       counted += 1
     } 
     expect(counted).toEqual(allKeys.length)
+  })
+
+  it('should be possible to break halfway', async () => {
+    const allKeys = [...Array(100).keys()].map((idx) => {
+      return `test2:${idx}`
+    })
+    await Promise.all(allKeys.map((key) => asyncClient.sadd(key, 'foo')))
+    let counted = 0
+    for await (const key of gen.keysMatching('test2*')) {
+      expect(allKeys).toContain(key)      
+      counted += 1
+      if (counted == 12) break
+    } 
+    expect(counted).toEqual(12)
   })
 
 })
