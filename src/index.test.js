@@ -7,7 +7,6 @@ const freePort = require('find-free-port')
 const RedisServer = require('redis-server')
 
 describe('async generator', () => {
-
   let server = null
   let port = -1
   let client = null
@@ -36,9 +35,9 @@ describe('async generator', () => {
     await Promise.all(allKeys.map((key) => asyncClient.sadd(key, 'foo')))
     let counted = 0
     for await (const key of gen.keysMatching('test1*')) {
-      expect(allKeys).toContain(key)      
+      expect(allKeys).toContain(key)
       counted += 1
-    } 
+    }
     expect(counted).toEqual(allKeys.length)
   })
 
@@ -49,11 +48,10 @@ describe('async generator', () => {
     await Promise.all(allKeys.map((key) => asyncClient.sadd(key, 'foo')))
     let counted = 0
     for await (const key of gen.keysMatching('test2*')) {
-      expect(allKeys).toContain(key)      
+      expect(allKeys).toContain(key)
       counted += 1
-      if (counted == 12) break
-    } 
+      if (counted === 12) break
+    }
     expect(counted).toEqual(12)
   })
-
 })

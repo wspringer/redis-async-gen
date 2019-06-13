@@ -5,9 +5,10 @@
   "main": "dist/redis-async-gen.js",
   "module": "dist/redis-async-gen.esm.js",
   "scripts": {
-    "prepublishOnly": "run-s clean test build",
+    "prepublishOnly": "run-s clean lint test build",
     "test": "jest",
     "build": "rollup -c",
+    "lint": "eslint src",
     "clean": "rimraf dist"
   },
   "files": [
@@ -17,7 +18,15 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "find-free-port": "^2.0.0",
     "jest": "^24.8.0",
     "npm-run-all": "^4.1.5",

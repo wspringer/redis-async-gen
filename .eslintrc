@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "standard",
+    "plugin:jest/recommended"
+  ],
+  "plugins": [
+    "jest"
+  ],
+  "rules": {
+    "no-underscore-dangle": ["error", { "allow": ["__get__"] }]
+  }
+}
