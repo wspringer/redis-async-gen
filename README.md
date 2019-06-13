@@ -1,3 +1,5 @@
+![Build status](https://travis-ci.org/wspringer/redis-async-gen.svg?branch=master)
+
 # README
 
 A little library to make scanning for a set of keys in a Redis database a little bit more tolerable. 
