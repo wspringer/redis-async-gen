@@ -13,6 +13,7 @@ const generators = require('redis-async-gen')
 const { keysMatching } = generators.using(client)
 
 …
+
 for await (const key of keysMatching('test*')) {
   console.info(key)
 }
