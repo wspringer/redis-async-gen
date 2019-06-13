@@ -21,6 +21,6 @@ for await (const key of keysMatching('test*')) {
 }
 ```
 
-Under the hoods, this library will call scan command repeatedly, fetching new sets of keys whenever it needs. The underlying cursor logic is completely hidden. 
+Under the hoods, this library will execute the scan command repeatedly, fetching new sets of keys whenever it needs. The underlying cursor logic is completely hidden. 
 
 If you *are* using the `for` comprehension to loop over keys matching a certain pattern, then be advised that you can break out of the loop at any time using the `break` operation. 
