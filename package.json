@@ -4,10 +4,12 @@
   "license": "MIT",
   "main": "dist/redis-async-gen.min.js",
   "scripts": {
+    "prepare": "run-s build",
     "test": "jest",
     "build": "run-s mkdirs compile",
-    "compile": "babel src/index.js --out-file dist/index.js",
-    "mkdirs": "shx mkdir -p dist"
+    "compile": "babel src/index.js --out-file dist/redis-async-gen.js",
+    "mkdirs": "shx mkdir -p dist",
+    "clean": "shx rm -fr dist"
   },
   "files": [
     "dist"
