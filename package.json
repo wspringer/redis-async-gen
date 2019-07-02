@@ -34,7 +34,8 @@
     "rimraf": "^2.6.3",
     "rollup": "^1.15.3",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-cpy": "^1.1.0"
+    "rollup-plugin-cpy": "^1.1.0",
+    "async-redis": "^1.1.7"
   },
   "babel": {
     "presets": [
@@ -42,7 +43,6 @@
     ]
   },
   "dependencies": {
-    "async-redis": "^1.1.7",
     "regenerator-runtime": "^0.13.2"
   }
 }
