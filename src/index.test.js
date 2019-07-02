@@ -54,4 +54,17 @@ describe('async generator', () => {
     }
     expect(counted).toEqual(12)
   })
+
+  it('should return all values', async () => {
+    const allValues = [...Array(100).keys()].map((idx) => {
+      return `test3:${idx}`
+    })
+    await Promise.all(allValues.map((value) => asyncClient.sadd('test3', value)))
+    let counted = 0
+    for await (const value of gen.valuesMatching('test3', 'test3*')) {
+      expect(allValues).toContain(value)
+      counted += 1
+    }
+    expect(counted).toEqual(allValues.length)
+  })
 })
