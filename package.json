@@ -1,6 +1,6 @@
 {
   "name": "redis-async-gen",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "main": "dist/redis-async-gen.js",
   "module": "dist/redis-async-gen.esm.js",
@@ -18,6 +18,7 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "async-redis": "^1.1.7",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "eslint": "^5.16.0",
@@ -34,8 +35,7 @@
     "rimraf": "^2.6.3",
     "rollup": "^1.15.3",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-cpy": "^1.1.0",
-    "async-redis": "^1.1.7"
+    "rollup-plugin-cpy": "^1.1.0"
   },
   "babel": {
     "presets": [
