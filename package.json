@@ -1,6 +1,6 @@
 {
   "name": "redis-async-gen",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "dist/redis-async-gen.js",
   "module": "dist/redis-async-gen.esm.js",
